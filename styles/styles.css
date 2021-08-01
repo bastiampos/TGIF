@@ -1,0 +1,63 @@
+.mainHome {
+    min-height: 37.2vh;
+}
+
+input {
+    margin-right: 1.5vw;
+    margin-left: 0.3vw;
+}
+
+label {
+    margin-left: 0.5vw;
+}
+
+tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+a {
+    text-decoration: none;
+}
+
+select {
+    width: 25vw;
+    margin-left: -8vw;
+    padding-left: 1vw;
+}
+
+#spanReadMore {
+    display: none;
+}
+
+#pReadMore.read-more #spanReadMore {
+    display: inline;
+}
+
+#readMore {
+    color: white;
+}
+
+img.homeImg {
+    width: 1vw;
+}
+
+.separador {
+    height: 1vh;
+    width: 100%;
+    background-color: #a8a7a7;
+    border-radius: 2px;
+    margin: 5vh 0
+}
+
+.tables {
+    width: 48%;
+}
+
+.tables th, .tables td {
+    padding: 0.5rem 0;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+}

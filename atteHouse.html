@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TGIF - Attendance House</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="./styles/styles.css">
+    </head>
+    <body class="container d-flex flex-column mt-5">
+        <header>
+            <div class="row d-flex">
+                <div class="col-10 d-flex align-items-center">
+                    <img src="./assets/logo.png" alt="TGIF">
+                    <h1>TGIF</h1>
+                </div>
+                <div class="col-2 d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-envelope-fill text-secondary" viewBox="0 0 16 16">
+                        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+                    </svg>
+                    <a class="ms-1" href="#">info@tgif.net</a>
+                </div>
+            </div>
+            <div>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Congress 113
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="./house.html">House</a></li>
+                                        <li><a class="dropdown-item" href="./senate.html">Senate</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Attendance
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="./atteHouse.html">House</a></li>
+                                        <li><a class="dropdown-item" href="./atteSenate.html">Senate</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Party Loyalty
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="./plHouse.html">House</a></li>
+                                        <li><a class="dropdown-item" href="./plSenate.html">Senate</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <div class="d-flex justify-content-between">
+                <div class="w-50">
+                    <h2 class="w-100">Attendance</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam molestias illo nobis voluptas debitis odio eum praesentium! Ex consequuntur, quam atque officiis dolorem aut vel corporis. Fuga illum, magni temporibus illo molestias laudantium accusamus voluptatum maxime eligendi soluta eveniet! Rerum consequuntur, cumque placeat modi molestias ipsam! Ut sed in aliquid accusamus illum alias error enim. Autem, error! Similique, sapiente temporibus ullam deleniti quia optio ipsa fuga! Recusandae, molestias similique error obcaecati dolores reprehenderit voluptates aut nostrum inventore.</p>
+                </div>
+                <div class="tables">
+                    <h3 class="text-end">House at a glance</h3>
+                    <table class="table w-100 text-center">
+                        <thead class="text-white bg-dark">
+                            <tr>
+                                <th scope="col">Party</th>
+                                <th scope="col">No. of Reps</th>
+                                <th scope="col">% Missed Votes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="glaceAttTables">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="separador"></div>
+
+            <div class="d-flex justify-content-between text-center">
+                <div class="tables">
+                    <h3>Least Engaged (Bottom 10% Attendance)</h3>
+                    <table class="table w-100">
+                        <thead class="text-white bg-dark sticky">
+                            <tr>
+                                <th>Name</th>
+                                <th>No. Missed Votes</th>
+                                <th>% Missed</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leastAttendance">
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tables">
+                    <h3>Most Engaged (Top 10% Attendance)</h3>
+                    <table class="table w-100">
+                        <thead class="text-white bg-dark sticky">
+                            <tr>
+                                <th>Name</th>
+                                <th>No. Missed Votes</th>
+                                <th>% Missed</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mostAttendance">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+        <footer class="text-center py-3 mt-5 bg-light mt-5 border border-secondary rounded-top">
+            <span>© 2016 TGIF | All rights Reserved</span>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="./scripts/house.js"></script>
+        <script src="./scripts/stadistics.js"></script>
+        <script src="./scripts/main.js"></script>
+    </body>
+</html>

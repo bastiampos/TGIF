@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TGIF- Congress113 House</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="../styles/styles.css">
+    </head>
+    <body class="container d-flex flex-column mt-5">
+        <header>
+            <div class="row d-flex">
+                <div class="col-10 d-flex align-items-center">
+                    <img src="../assets/logo.png" alt="TGIF">
+                    <h1>TGIF</h1>
+                </div>
+                <div class="col-2 d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-envelope-fill text-secondary" viewBox="0 0 16 16">
+                        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+                    </svg>
+                    <a class="ms-1" href="#">info@tgif.net</a>
+                </div>
+            </div>
+            <div>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Congress 113
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="./house.html">House</a></li>
+                                        <li><a class="dropdown-item" href="./senate.html">Senate</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Attendance
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="./atteHouse.html">House</a></li>
+                                        <li><a class="dropdown-item" href="./atteSenate.html">Senate</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Party Loyalty
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="./plHouse.html">House</a></li>
+                                        <li><a class="dropdown-item" href="./plSenate.html">Senate</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main class="row d-flex justify-content-center my-5">
+            <div class="col-10">
+                <h2>Congressmen</h2>
+                <p class="text-start">The United States Congress is the bicameral legislature of the federal government of the United States and consists of the House of Representatives and the Senate. The Congress meets in the United States Capitol in Washington, D.C. Both senators and representatives are chosen through direct election, though vacancies in the Senate may be filled by a governor's appointment. Congress has 535 voting members: 100 senators and 435 representatives. The Vice President of the United States has a vote in the Senate only when senators are evenly divided; the House of Representatives has six non-voting members
+                </p>
+            </div>
+            <div class="col-10 mt-1">
+                <form class="d-flex justify-content-around align-items-center">
+                    <div class="d-flex select">
+                        <legend class="mx-2">State</legend>
+                        <select name="states" id="statesSelect" class="border border-secondary rounded">
+                            <option value="Todos" class="dropdown-item">All States</option>
+                        </select>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <legend class="mx-2">Party Affiliation</legend>
+                        <label for="demo">Democratic</label>
+                        <input type="checkbox" checked name="party" id="D" value="demo">
+                        <label for="repu">Republican</label>
+                        <input type="checkbox" checked name="party" id="R" value="repu">
+                        <label for="inde">Independent</label>
+                        <input type="checkbox" checked name="party" id="ID" value="inde">
+                    </div>
+                </form>
+            </div>
+            <div class="col-10">
+                <table class="table text-center mt-3">
+                    <thead class="text-white bg-dark sticky">
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Party</th>
+                            <th scope="col">State</th>
+                            <th scope="col">Years in Office</th>
+                            <th scope="col">% Vote w/Party</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table">
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <footer class="text-center py-3 mt-5 bg-light mt-5 border border-secondary rounded-top">
+            <span>© 2016 TGIF | All rights Reserved</span>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="../scripts/house.js"></script>
+        <script src="../scripts/main.js"></script>
+    </body>
+</html>
