@@ -1,5 +1,5 @@
 //Readmore index
-if (document.title.includes('TGIF - Home')) {
+if (document.title.includes('Home')) {
     const readMoreBtn = document.getElementById('readMore')
     const text = document.getElementById('pReadMore')
 
@@ -13,99 +13,297 @@ if (document.title.includes('TGIF - Home')) {
     })
 }
 
-// Defino el array de objetos (Miembros)
-let congressMembers = data.results[0].members
+if (document.title.includes('Congress')) {
+    // Defino el array de objetos (Miembros)
+    let congressMembers = data.results[0].members
 
-//Filtro los Estados para no mostrarlos repetidos en el Form>Select
-let states = []
+    //Filtro los Estados para no mostrarlos repetidos en el Form>Select
+    let states = []
 
-congressMembers.forEach((member) => {
-    if (!states.includes(member.state)) {
-        states.push(member.state)
-    }
-})
-states.sort()
-
-states.forEach((state) => {
-    let stateOption = document.createElement('option')
-    stateOption.setAttribute('value', state)
-    stateOption.innerText = state
-    if (document.title.includes('TGIF - Congress113')) {
-       document.getElementById('statesSelect').appendChild(stateOption) 
-    }
-})
-
-//Defino variables globales
-
-var filtroStates = 'Todos'
-var filtroParty = ['demo', 'repu', 'inde']
-var miembrosFinales = []
-
-function leerFiltros (){
-    let miembrosFiltrados = []
-    if (filtroStates == 'Todos') {
-        miembrosFiltrados = congressMembers
-    } else {
-        miembrosFiltrados = congressMembers.filter( member => member.state === filtroStates)
-    }
-
-    miembrosFinales = []
-    miembrosFiltrados.forEach( (member) => {
-        // let parties = member.party
-        if (member.party == 'D' && filtroParty.includes('demo')){
-            miembrosFinales.push(member)
-        }
-
-        if (member.party == 'R' && filtroParty.includes('repu')){
-            miembrosFinales.push(member)
-        }
-
-        if (member.party == 'ID' && filtroParty.includes('inde')){
-            miembrosFinales.push(member)
+    congressMembers.forEach((member) => {
+        if (!states.includes(member.state)) {
+            states.push(member.state)
         }
     })
-}
+    states.sort()
 
-leerFiltros()
+    states.forEach((state) => {
+        let stateOption = document.createElement('option')
+        stateOption.setAttribute('value', state)
+        stateOption.innerText = state
+        if (document.title.includes('TGIF - Congress113')) {
+        document.getElementById('statesSelect').appendChild(stateOption) 
+        }
+    })
 
-//RENDERIZADO EN FUNCION
-function filtrarTabla() {
-    document.getElementById('table').innerText = ''
+    //Defino variables globales
+
+    var filtroStates = 'Todos'
+    var filtroParty = ['demo', 'repu', 'inde']
+    var miembrosFinales = []
+
+    function leerFiltros (){
+        let miembrosFiltrados = []
+        if (filtroStates == 'Todos') {
+            miembrosFiltrados = congressMembers
+        } else {
+            miembrosFiltrados = congressMembers.filter( member => member.state === filtroStates)
+        }
+
+        miembrosFinales = []
+        miembrosFiltrados.forEach( (member) => {
+            // let parties = member.party
+            if (member.party == 'D' && filtroParty.includes('demo')){
+                miembrosFinales.push(member)
+            }
+
+            if (member.party == 'R' && filtroParty.includes('repu')){
+                miembrosFinales.push(member)
+            }
+
+            if (member.party == 'ID' && filtroParty.includes('inde')){
+                miembrosFinales.push(member)
+            }
+        })
+    }
+
     leerFiltros()
-    miembrosFinales.forEach((member) => {
-        let row = document.createElement('tr')
-        let nameMember = `${member.first_name} ${member.middle_name ? member.middle_name : ""} ${member.last_name}`
-        row.innerHTML= `<td><a href="${member.url}" target="_blank">${nameMember}</a></td><td>${member.party}</td><td>${member.state}</td><td>${member.seniority}</td><td>${member.votes_with_party_pct}</td>`
-        document.getElementById('table').appendChild(row)
+
+    //RENDERIZADO EN FUNCION
+    function filtrarTabla() {
+        document.getElementById('table').innerText = ''
+        leerFiltros()
+        miembrosFinales.forEach((member) => {
+            let row = document.createElement('tr')
+            let nameMember = `${member.first_name} ${member.middle_name ? member.middle_name : ""} ${member.last_name}`
+            row.innerHTML= `<td><a href="${member.url}" target="_blank">${nameMember}</a></td><td>${member.party}</td><td>${member.state}</td><td>${member.seniority}</td><td>${member.votes_with_party_pct}</td>`
+            document.getElementById('table').appendChild(row)
+        })
+    }
+
+    filtrarTabla()
+
+    //Capturo los checkboxes como NodeList y la reescribo como Array
+    let checkboxes = document.getElementsByName('party')
+    checkboxes = Array.from(checkboxes) 
+
+    //CREO LOS EVENTOS
+
+    checkboxes.forEach( (input) => {
+        input.addEventListener('change', (e) => {
+            let cbValue = e.target.value
+            let cbChecked = e.target.checked
+            if (filtroParty.includes(cbValue) && !cbChecked){
+                filtroParty = filtroParty.filter((valueEliminate)=>{
+                    return valueEliminate !== cbValue
+                })
+            } else if (!filtroParty.includes(cbValue) && cbChecked) {
+                filtroParty.push(cbValue)
+            }
+            console.log(filtroParty)
+            filtrarTabla()
+        })
     })
-}
 
-filtrarTabla()
-
-//Capturo los checkboxes como NodeList y la reescribo como Array
-let checkboxes = document.getElementsByName('party')
-checkboxes = Array.from(checkboxes) 
-
-//CREO LOS EVENTOS
-
-checkboxes.forEach( (input) => {
-    input.addEventListener('change', (e) => {
-        let cbValue = e.target.value
-        let cbChecked = e.target.checked
-        if (filtroParty.includes(cbValue) && !cbChecked){
-            filtroParty = filtroParty.filter((valueEliminate)=>{
-                return valueEliminate !== cbValue
-            })
-        } else if (!filtroParty.includes(cbValue) && cbChecked) {
-            filtroParty.push(cbValue)
-        }
-        console.log(filtroParty)
+    document.getElementById('statesSelect').addEventListener('change', (e) => {
+        let stateSelected = e.target.value //Capturo el value de cada option
+        filtroStates = stateSelected //Sobrescribo a filtroStates como el Value de cada Option
         filtrarTabla()
     })
+}
+
+//////////////////// ATTENDANCE Y PARTY LOYALTY //////////////////
+
+let init = {
+    headers: {
+        "X-API-Key": "1e06defbb99e87a67b4d950de6879f0e3219deff"
+    }
+}
+
+// let data = []
+// fetch(`https://api.propublica.org/congress/v1/113/${chamber}/members.json`)
+//     .then(response => response.json())
+//     .then(json => {
+
+//     })
+//     .catch(error => console.log(error))
+
+
+const members = data.results[0].members
+
+let statistics = {
+  glanceTables: [
+    {
+      nameParty: 'Democrat',
+      members: [],
+      totalMembers: null,
+      votesWithAPartyAverage: null,
+      missedVotesAverage: null,
+    },
+    {
+      nameParty: 'Republican',
+      members: [],
+      totalMembers: null,
+      votesWithAPartyAverage: null,
+      missedVotesAverage: null,
+    },
+    {
+      nameParty: 'Independent',
+      members: [],
+      totalMembers: null,
+      votesWithAPartyAverage: null,
+      missedVotesAverage: null,
+    },
+    {
+      nameParty: 'Total',
+      members: [],
+      totalMembers: null,
+      votesWithAPartyAverage: null,
+      missedVotesAverage: null,
+    }
+  ],
+  attendanceTables: {
+    mostEngaged: [],
+    leastEngaged: []
+  },
+  partyLoyaltyTables: {
+    mostLoyal: [],
+    leastLoyal: []
+  }
+}
+
+let {glanceTables, attendanceTables, partyLoyaltyTables} = statistics
+
+//Empiezo llenando de datos los objetos
+
+glanceTables[0].members = members.filter(member => member.party === 'D')
+glanceTables[1].members = members.filter(member => member.party === 'R')
+glanceTables[2].members = members.filter(member => member.party === 'ID')
+
+glanceTables.forEach( (party) => {
+  party.totalMembers = party.members.length
 })
 
-document.getElementById('statesSelect').addEventListener('change', (e) => {
-    let stateSelected = e.target.value //Capturo el value de cada option
-    filtroStates = stateSelected //Sobrescribo a filtroStates como el Value de cada Option
-    filtrarTabla()
+glanceTables[3].totalMembers = members.length
+
+//promedio de promedios Att
+glanceTables[3].missedVotesAverage = (glanceTables[0].missedVotesAverage + glanceTables[1].missedVotesAverage + glanceTables[2].missedVotesAverage)/3
+
+//promedio de promedios Party
+glanceTables[3].votesWithAPartyAverage = (glanceTables[0].votesWithAPartyAverage + glanceTables[1].votesWithAPartyAverage + glanceTables[2].votesWithAPartyAverage)/3
+
+
+//Calculo promedio de porcentajes Attendance
+glanceTables.forEach( (party) => {
+  party.missedVotesAverage = party.members.map( ({missed_votes_pct}) => missed_votes_pct)
+
+  if (party.missedVotesAverage !=0) {
+    party.missedVotesAverage= party.missedVotesAverage.reduce( (a, b) => a+b) / party.members.length
+  } else {
+    party.missedVotesAverage= 0
+  }
 })
+
+ //Calculo promedio de porcentajes PartyLoyalty
+ glanceTables.forEach( (party) => {
+  party.votesWithAPartyAverage = party.members.map( ({votes_with_party_pct}) => votes_with_party_pct)
+
+  if (party.votesWithAPartyAverage !=0) {
+    party.votesWithAPartyAverage= party.votesWithAPartyAverage.reduce( (a, b) => a+b) / party.members.length
+  } else {
+    party.votesWithAPartyAverage= 0
+  }
+})  
+
+//filtro luego ordeno ATTENDANCE
+
+attendanceTables.leastEngaged= [...members].filter(member => member.missed_votes_pct !== 0)
+attendanceTables.mostEngaged= [...members].filter(member => member.missed_votes_pct !== 0)
+
+attendanceTables.leastEngaged.sort( (a, b) => {
+  return a.missed_votes_pct - b.missed_votes_pct
+})
+
+attendanceTables.mostEngaged.sort( (a, b) => {
+  return b.missed_votes_pct - a.missed_votes_pct
+})
+
+
+//filtro luego ordeno PARTY
+
+partyLoyaltyTables.leastLoyal = [...members].filter(member => member.votes_with_party_pct !== 0)
+partyLoyaltyTables.mostLoyal = [...members].filter(member => member.votes_with_party_pct !== 0)
+
+partyLoyaltyTables.leastLoyal.sort( (a, b) => {
+  return a.votes_with_party_pct - b.votes_with_party_pct 
+})
+
+partyLoyaltyTables.mostLoyal.sort( (a, b) => {
+  return b.votes_with_party_pct - a.votes_with_party_pct
+})
+
+
+//Tomo solo el 10% pedido Attendance
+let indexofAttendancePct = attendanceTables.mostEngaged.length * 0.1
+attendanceTables.mostEngaged = attendanceTables.mostEngaged.slice(0, `${indexofAttendancePct}`)
+attendanceTables.leastEngaged = attendanceTables.leastEngaged.slice(0, `${indexofAttendancePct}`)
+
+//Tomo solo el 10% pedido Party
+let indexofPartyLoyaltyPct = partyLoyaltyTables.mostLoyal.length * 0.1
+partyLoyaltyTables.mostLoyal = partyLoyaltyTables.mostLoyal.slice(0, `${indexofPartyLoyaltyPct}`)
+partyLoyaltyTables.leastLoyal = partyLoyaltyTables.leastLoyal.slice(0, `${indexofPartyLoyaltyPct}`)
+
+
+//RENDERIZADO DE TABLAS
+
+//Renderizo tablas  "at a glance"
+function pintarTablasGlance (table) {
+  glanceTables.forEach((party) => {
+    let row = document.createElement('tr')
+    
+    if(document.title.includes('TGIF - Attendance House') || document.title.includes('TGIF - Attendance Senate')){
+      row.innerHTML= `<td>${party.nameParty}</td><td>${party.totalMembers}</td><td>${party.missedVotesAverage.toFixed(2)} %</td>`
+    }
+
+    if(document.title.includes('TGIF - PartyLoyalty House') || document.title.includes('TGIF - PartyLoyalty Senate' )){
+      row.innerHTML= `<td>${party.nameParty}</td><td>${party.totalMembers}</td><td>${party.votesWithAPartyAverage.toFixed(2)} %</td>`
+    }
+    document.getElementById(table).appendChild(row)
+  }) 
+}
+
+//Renderizo las tablas inferiores de Attendance
+function pintarTablasAttendance (propiedad, tabla) {
+  propiedad.forEach(member => {
+    let row = document.createElement('tr')
+    let nameMember= `${member.first_name} ${member.middle_name ? member.middle_name : ""} ${member.last_name}`
+    row.innerHTML= `<td><a href="${member.url}" target="_blank">${nameMember}</a></td><td>${member.missed_votes}</td><td>${member.missed_votes_pct.toFixed(2)} %</td>`
+    document.getElementById(tabla).appendChild(row)
+  })
+}
+
+//Renderizo las tablas inferiores de PartyLoyalty
+function pintarTablasPartyLoyalty (propiedad, tabla) {
+  propiedad.forEach(member => {
+    let row = document.createElement('tr')
+    let nameMember= `${member.first_name} ${member.middle_name ? member.middle_name : ""} ${member.last_name}`
+    row.innerHTML= `<td><a href="${member.url}" target="_blank">${nameMember}</a></td><td>${((member.votes_with_party_pct * member.total_votes) /100).toFixed(0)}</td><td>${member.votes_with_party_pct.toFixed(2)} %</td>`
+    document.getElementById(tabla).appendChild(row)
+  })
+}
+
+// LLAMO A LAS FUNCIONES
+
+if ( document.title.includes('TGIF - Attendance House') || document.title.includes('TGIF - Attendance Senate') ) {
+
+  pintarTablasGlance('glaceAttTables')
+  pintarTablasAttendance(attendanceTables.leastEngaged, 'mostAttendance')
+  pintarTablasAttendance(attendanceTables.mostEngaged, 'leastAttendance')
+}
+
+if ( document.title.includes('TGIF - PartyLoyalty House') || document.title.includes('TGIF - PartyLoyalty Senate' )) {
+
+  pintarTablasGlance('glacePLTables')
+  pintarTablasPartyLoyalty(partyLoyaltyTables.mostLoyal, 'mostPartyLoyalty')
+  pintarTablasPartyLoyalty(partyLoyaltyTables.leastLoyal, 'leastPartyLoyalty')
+}
