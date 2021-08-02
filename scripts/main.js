@@ -30,6 +30,7 @@ states.forEach((state) => {
     let stateOption = document.createElement('option')
     stateOption.setAttribute('value', state)
     stateOption.innerText = state
+    if (document.title.includes('TGIF - Congress113 House' || 'TGIF - Congress113 Senate'))
     document.getElementById('statesSelect').appendChild(stateOption)
 })
 
@@ -73,12 +74,12 @@ function filtrarTabla() {
     leerFiltros()
     miembrosFinales.forEach((member) => {
         let row = document.createElement('tr')
-        let nameCol = document.createElement('td')
-        let aNames = document.createElement('a') 
-        let partyCol = document.createElement('td')
-        let stateCol = document.createElement('td')
-        let seniorityCol = document.createElement('td')
-        let pctCol = document.createElement('td')
+        // let nameCol = document.createElement('td')
+        // let aNames = document.createElement('a') 
+        // let partyCol = document.createElement('td')
+        // let stateCol = document.createElement('td')
+        // let seniorityCol = document.createElement('td')
+        // let pctCol = document.createElement('td')
     
         aNames.setAttribute('href', member.url) 
         aNames.setAttribute('target', '_blank')
@@ -89,13 +90,13 @@ function filtrarTabla() {
         seniorityCol.innerText = member.seniority
         pctCol.innerText = member.votes_with_party_pct
     
-        row.appendChild(nameCol)
-        nameCol.appendChild(aNames)
-        row.appendChild(partyCol)
-        row.appendChild(stateCol)
-        row.appendChild(seniorityCol)
-        row.appendChild(seniorityCol)
-        row.appendChild(pctCol)
+        // row.appendChild(nameCol)
+        // nameCol.appendChild(aNames)
+        // row.appendChild(partyCol)
+        // row.appendChild(stateCol)
+        // row.appendChild(seniorityCol)
+        // row.appendChild(seniorityCol)
+        // row.appendChild(pctCol)
         document.getElementById('table').appendChild(row)
     })
 }
