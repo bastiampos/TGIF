@@ -4,18 +4,18 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TGIF- Home</title>
+        <title>TGIF - Home</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link href="./styles/styles.css" rel="stylesheet">
     </head>
-    <body class="container d-flex flex-column mt-5">
+    <body class="container d-flex flex-column">
         <header>
-            <div class="row d-flex">
-                <div class="col-10 d-flex align-items-center">
-                    <img src="./assets/logo.png" alt="TGIF">
-                    <h1>TGIF</h1>
+            <div class="row d-flex mx-3">
+                <div class="col-10 d-flex align-items-end">
+                    <img class="logo" src="./assets/logo.jpg" alt="TGIF">
+                    <h1 class="mx-3">TGIF</h1>
                 </div>
-                <div class="col-2 d-flex align-items-center">
+                <div class="col-2 d-flex align-items-end my-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-envelope-fill text-secondary" viewBox="0 0 16 16">
                         <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
                     </svg>
@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div>
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div class="container-fluid">
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -34,30 +34,30 @@
                                     <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Congress 113
                                     </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="./house.html">House</a></li>
-                                        <li><a class="dropdown-item" href="./senate.html">Senate</a></li>
+                                    <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item text-white" href="./pages/house.html">House</a></li>
+                                        <li><a class="dropdown-item text-white" href="./pages/senate.html">Senate</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Attendance
                                     </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="./atteHouse.html">House</a></li>
-                                        <li><a class="dropdown-item" href="./atteSenate.html">Senate</a></li>
+                                    <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item text-white" href="./pages/atteHouse.html">House</a></li>
+                                        <li><a class="dropdown-item text-white" href="./pages/atteSenate.html">Senate</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Party Loyalty
                                     </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="./plHouse.html">House</a></li>
-                                        <li><a class="dropdown-item" href="./plSenate.html">Senate</a></li>
+                                    <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item text-white" href="./pages/plHouse.html">House</a></li>
+                                        <li><a class="dropdown-item text-white" href="./pages/plSenate.html">Senate</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -66,16 +66,16 @@
                 </nav>
             </div>
         </header>
-        <main class="mainHome d-flex my-5 justify-content-center align-items-start">
+        <main class="mainHome my-5 d-flex justify-content-center align-items-start">
             <div class="w-75 px-5">
                 <h2>About Us</h2>
-                <p id="pReadMore">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero nostrum vel deserunt obcaecati, quibusdam quisquam quod, praesentium eligendi officia provident beatae, eaque impedit animi maiores temporibus dolorem sequi voluptatum illo veritatis! Beatae molestias sed ipsum ab voluptas eveniet voluptatum delectus a qui libero officia magni perferendis, ea vel vero dignissimos! <span id="spanReadMore">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic perspiciatis tempore fuga quae, culpa reprehenderit iste autem inventore natus in voluptates maiores voluptas laboriosam rerum quam placeat consequatur facilis architecto. Enim doloribus molestias consequatur saepe eligendi id quasi consequuntur nesciunt, fugit consectetur voluptas veritatis, sint debitis obcaecati eos vel quae fugiat nihil. Voluptatum consequuntur magni eaque, vel ipsa minima earum architecto corporis laborum saepe esse provident beatae obcaecati fugiat odit consectetur ea molestias mollitia eius rerum culpa ad. Mollitia, iure?</span>
+                <p id="pReadMore">El 113.º Congreso de los Estados Unidos fue la reunión legislativa del gobierno federal de los Estados Unidos. Está compuesta por el Senado de los Estados Unidos y la Cámara de Representantes de los Estados Unidos y basada en los resultados de las elecciones al Senado de 2012 y las elecciones a la Cámara de Representantes de 2012. Los escaños de la Cámara fueron ordenados por medio de prorrateado basado en el censo de 2010. <span id="spanReadMore">La primera sesión fue en Washington D. C. el 3 de febrero de 2013, y terminó el 3 de enero de 2015. Los Senadores elegidos para términos regulares en 2008, actualmente completan sus dos últimos 2 años en el Congreso. En su inicio, este Congreso tuvo 43 miembros africanos americanos (todos a excepción de uno en la Cámara de Representantes),1​ y un número récord de mujeres.</span>
                 </p>
                 <a class="btn btn-default bg-dark" id="readMore" href="#spanReadMore"><i class="fa fa-plus-square"></i>Read more</a>
             </div>
-            <img id="imgHome" src="./assets/home.png" alt="Home">
+            <img class="w-25" src="./assets/logocongress.svg" alt="TGIF">
         </main>
-        <footer class="text-center py-3 mt-5 bg-light mt-5 border border-secondary rounded-top">
+        <footer class="col-10 text-white text-center py-3 mt-5 bg-dark mt-5 position-absolute bottom-0">
             <span>© 2016 TGIF | All rights Reserved</span>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

@@ -1,5 +1,5 @@
-.mainHome {
-    min-height: 37.2vh;
+.logo {
+    width: 10%;
 }
 
 input {
@@ -60,4 +60,17 @@ img.homeImg {
 .sticky {
     position: sticky;
     top: 0;
+}
+
+.dropdown-item:hover {
+    background-color: #323538;
+}
+
+.activo {
+    color: yellow;
+}
+
+.scroll {
+    overflow: scroll;
+    height: 80%;
 }

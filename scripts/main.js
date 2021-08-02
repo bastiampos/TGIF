@@ -1,5 +1,5 @@
 //Readmore index
-if (document.title.includes('TGIF-Home')) {
+if (document.title.includes('TGIF - Home')) {
     const readMoreBtn = document.getElementById('readMore')
     const text = document.getElementById('pReadMore')
 
@@ -30,8 +30,9 @@ states.forEach((state) => {
     let stateOption = document.createElement('option')
     stateOption.setAttribute('value', state)
     stateOption.innerText = state
-    if (document.title.includes('TGIF - Congress113 House' || 'TGIF - Congress113 Senate'))
-    document.getElementById('statesSelect').appendChild(stateOption)
+    if (document.title.includes('TGIF - Congress113')) {
+       document.getElementById('statesSelect').appendChild(stateOption) 
+    }
 })
 
 //Defino variables globales
@@ -50,7 +51,7 @@ function leerFiltros (){
 
     miembrosFinales = []
     miembrosFiltrados.forEach( (member) => {
-        let parties = member.party
+        // let parties = member.party
         if (member.party == 'D' && filtroParty.includes('demo')){
             miembrosFinales.push(member)
         }
@@ -63,7 +64,6 @@ function leerFiltros (){
             miembrosFinales.push(member)
         }
     })
-    
 }
 
 leerFiltros()
@@ -74,34 +74,14 @@ function filtrarTabla() {
     leerFiltros()
     miembrosFinales.forEach((member) => {
         let row = document.createElement('tr')
-        // let nameCol = document.createElement('td')
-        // let aNames = document.createElement('a') 
-        // let partyCol = document.createElement('td')
-        // let stateCol = document.createElement('td')
-        // let seniorityCol = document.createElement('td')
-        // let pctCol = document.createElement('td')
-    
-        aNames.setAttribute('href', member.url) 
-        aNames.setAttribute('target', '_blank')
-    
-        aNames.innerText = `${member.first_name} ${member.middle_name ? member.middle_name : ""} ${member.last_name}`
-        partyCol.innerText = member.party
-        stateCol.innerText = member.state
-        seniorityCol.innerText = member.seniority
-        pctCol.innerText = member.votes_with_party_pct
-    
-        // row.appendChild(nameCol)
-        // nameCol.appendChild(aNames)
-        // row.appendChild(partyCol)
-        // row.appendChild(stateCol)
-        // row.appendChild(seniorityCol)
-        // row.appendChild(seniorityCol)
-        // row.appendChild(pctCol)
+        let nameMember = `${member.first_name} ${member.middle_name ? member.middle_name : ""} ${member.last_name}`
+        row.innerHTML= `<td><a href="${member.url}" target="_blank">${nameMember}</a></td><td>${member.party}</td><td>${member.state}</td><td>${member.seniority}</td><td>${member.votes_with_party_pct}</td>`
         document.getElementById('table').appendChild(row)
     })
 }
 
 filtrarTabla()
+
 //Capturo los checkboxes como NodeList y la reescribo como Array
 let checkboxes = document.getElementsByName('party')
 checkboxes = Array.from(checkboxes) 
@@ -129,5 +109,3 @@ document.getElementById('statesSelect').addEventListener('change', (e) => {
     filtroStates = stateSelected //Sobrescribo a filtroStates como el Value de cada Option
     filtrarTabla()
 })
-
-
