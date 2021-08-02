@@ -1,5 +1,3 @@
-
-
 //////////////////// ATTENDANCE Y PARTY LOYALTY //////////////////
 
 let init = {
@@ -165,8 +163,8 @@ function test (members) {
                 nameParty: 'Total',
                 members: [],
                 totalMembers: null,
-                votesWithAPartyAverage: '',
-                missedVotesAverage: '',
+                votesWithAPartyAverage: null,
+                missedVotesAverage: null,
             }
             ],
             attendanceTables: {
@@ -203,7 +201,7 @@ function test (members) {
             party.missedVotesAverage= 0
             }
         })
-        
+    
         //Calculo promedio de porcentajes PartyLoyalty
         glanceTables.forEach( (party) => {
             party.votesWithAPartyAverage = party.members.map( ({votes_with_party_pct}) => votes_with_party_pct)
@@ -262,11 +260,11 @@ function test (members) {
             let row = document.createElement('tr')
             
             if(document.title.includes('Attendance')){
-                row.innerHTML= `<td>${party.nameParty}</td><td>${party.totalMembers}</td><td>${party.missedVotesAverage.toFixed(2)} %</td>`
+                row.innerHTML= `<td>${party.nameParty}</td><td>${party.totalMembers}</td><td>${party.missedVotesAverage.toFixed(2) != 0 ? party.missedVotesAverage.toFixed(2) : 'Not apply'}</td>`
             }
         
             if(document.title.includes('PartyLoyalty')){
-                row.innerHTML= `<td>${party.nameParty}</td><td>${party.totalMembers}</td><td>${party.votesWithAPartyAverage.toFixed(2)} %</td>`
+                row.innerHTML= `<td>${party.nameParty}</td><td>${party.totalMembers}</td><td>${party.votesWithAPartyAverage.toFixed(2) !=0 ? party.votesWithAPartyAverage.toFixed(2) : 'Not apply'}</td>`
             }
             document.getElementById(table).appendChild(row)
             }) 
